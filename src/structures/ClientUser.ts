@@ -83,6 +83,7 @@ export type SetActivityResponse = {
     name: string;
     application_id: string;
     type: number;
+    statusDisplayType: number;
     metadata: {
         button_urls?: string[];
     };
