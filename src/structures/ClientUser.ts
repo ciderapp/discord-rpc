@@ -256,6 +256,7 @@ export class ClientUser extends User {
         const formattedActivity: any = {
             name: activity.name,
             type: activity.type ?? ActivityType.Playing,
+            status_activity_type: activity.statusDisplayType ?? StatusDisplayType.NAME,
             created_at: Date.now(),
             instance: !!activity.instance
         };
@@ -272,9 +273,6 @@ export class ClientUser extends User {
         // URL fields for clickable details and state
         if (activity.detailsUrl) formattedActivity.details_url = activity.detailsUrl;
         if (activity.stateUrl) formattedActivity.state_url = activity.stateUrl;
-
-        // Status display type - controls which field appears in member list
-        if (activity.statusDisplayType !== undefined) formattedActivity.status_display_type = activity.statusDisplayType;
 
         // Timestamps (only if any defined)
         if (activity.startTimestamp || activity.endTimestamp) {
