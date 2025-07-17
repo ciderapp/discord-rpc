@@ -1,4 +1,4 @@
-import { ActivityType, GatewayActivityButton } from "discord-api-types/v10";
+import { ActivityType, StatusDisplayType, GatewayActivityButton } from "discord-api-types/v10";
 import type { CertifiedDevice } from "./CertifiedDevice";
 import { VoiceSettings } from "./VoiceSettings";
 import { Channel } from "./Channel";
@@ -19,10 +19,13 @@ export enum ActivityPartyPrivacy {
 export type SetActivity = {
     name?: string;
     type?: ActivityType;
+    statusDisplayType?: StatusDisplayType;
     url?: string;
 
     state?: string;
     details?: string;
+    detailsUrl?: string;
+    stateUrl?: string;
 
     startTimestamp?: number | Date;
     endTimestamp?: number | Date;
@@ -31,6 +34,8 @@ export type SetActivity = {
     smallImageKey?: string;
     largeImageText?: string;
     smallImageText?: string;
+    largeImageUrl?: string;
+    smallImageUrl?: string;
 
     partyId?: string;
     partySize?: number;
@@ -245,6 +250,13 @@ export class ClientUser extends User {
         if (activity.details) formattedActivity.details = activity.details;
         if (activity.state) formattedActivity.state = activity.state;
 
+        // URL fields for clickable details and state
+        if (activity.detailsUrl) formattedActivity.details_url = activity.detailsUrl;
+        if (activity.stateUrl) formattedActivity.state_url = activity.stateUrl;
+
+        // Status display type - controls which field appears in member list
+        if (activity.statusDisplayType !== undefined) formattedActivity.status_display_type = activity.statusDisplayType;
+
         // Timestamps (only if any defined)
         if (activity.startTimestamp || activity.endTimestamp) {
             formattedActivity.timestamps = {};
@@ -262,12 +274,15 @@ export class ClientUser extends User {
         }
 
         // Assets (only if any defined)
-        if (activity.largeImageKey || activity.smallImageKey || activity.largeImageText || activity.smallImageText) {
+        if (activity.largeImageKey || activity.smallImageKey || activity.largeImageText || activity.smallImageText || activity.largeImageUrl || activity.smallImageUrl) {
             formattedActivity.assets = {};
             if (activity.largeImageKey) formattedActivity.assets.large_image = activity.largeImageKey;
             if (activity.smallImageKey) formattedActivity.assets.small_image = activity.smallImageKey;
             if (activity.largeImageText) formattedActivity.assets.large_text = activity.largeImageText;
             if (activity.smallImageText) formattedActivity.assets.small_text = activity.smallImageText;
+            // URL fields for clickable images
+            if (activity.largeImageUrl) formattedActivity.assets.large_url = activity.largeImageUrl;
+            if (activity.smallImageUrl) formattedActivity.assets.small_url = activity.smallImageUrl;
         }
 
         // Party (only if any defined)

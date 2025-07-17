@@ -28,14 +28,14 @@
         "prepack": "pnpm run build"
     },
     "dependencies": {
-        "@discordjs/rest": "^2.5.0",
+        "@discordjs/rest": "^2.5.1",
         "@vladfrangu/async_event_emitter": "^2.4.6",
-        "discord-api-types": "^0.38.10",
-        "ws": "^8.18.2"
+        "discord-api-types": "^0.38.16",
+        "ws": "^8.18.3"
     },
     "devDependencies": {
         "@sapphire/ts-config": "^5.0.1",
-        "@types/node": "^18",
+        "@types/node": "^18.19.119",
         "@types/ws": "^8.18.1",
         "rimraf": "^6.0.1",
         "typescript": "^5.8.3"
