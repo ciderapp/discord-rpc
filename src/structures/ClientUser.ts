@@ -1,4 +1,4 @@
-import { ActivityType, StatusDisplayType, GatewayActivityButton } from "discord-api-types/v10";
+import { ActivityType, GatewayActivityButton } from "discord-api-types/v10";
 import type { CertifiedDevice } from "./CertifiedDevice";
 import { VoiceSettings } from "./VoiceSettings";
 import { Channel } from "./Channel";
@@ -14,6 +14,24 @@ export enum ActivitySupportedPlatform {
 export enum ActivityPartyPrivacy {
     PRIVATE = 0,
     PUBLIC = 1
+}
+
+/**
+ * @see {@link https://github.com/discord/discord-api-docs/pull/7674}
+ */
+export enum StatusDisplayType {
+    /**
+     * Displays the activity name in status (e.g., "Listening to Spotify")
+     */
+    NAME = 0,
+    /**
+     * Displays the activity state in status (e.g., "Listening to Rick Astley")
+     */
+    STATE = 1,
+    /**
+     * Displays the activity details in status (e.g., "Listening to Never Gonna Give You Up")
+     */
+    DETAILS = 2
 }
 
 export type SetActivity = {
