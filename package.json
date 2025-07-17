@@ -1,19 +1,19 @@
 {
-    "name": "@xhayper/discord-rpc",
-    "version": "1.2.2",
+    "name": "@ciderapp/discord-rpc",
+    "version": "1.2.3",
     "description": "a fork of discordjs/RPC",
     "main": "dist/index.js",
-    "author": "xhayper",
+    "author": "ciderapp, xhayper",
     "license": "ISC",
     "types": "dist/index.d.ts",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/xhayper/discord-rpc.git"
+        "url": "git+https://github.com/ciderapp/discord-rpc.git"
     },
     "bugs": {
-        "url": "https://github.com/xhayper/discord-rpc/issues"
+        "url": "https://github.com/ciderapp/discord-rpc/issues"
     },
-    "homepage": "https://github.com/xhayper/discord-rpc#readme",
+    "homepage": "https://github.com/ciderapp/discord-rpc#readme",
     "keywords": [
         "typescript",
         "discord",
