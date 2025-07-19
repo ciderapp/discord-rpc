@@ -256,7 +256,7 @@ export class ClientUser extends User {
         const formattedActivity: any = {
             name: activity.name,
             type: activity.type ?? ActivityType.Playing,
-            status_activity_type: activity.statusDisplayType ?? StatusDisplayType.NAME,
+            status_display_type: activity.statusDisplayType ?? StatusDisplayType.NAME,
             created_at: Date.now(),
             instance: !!activity.instance
         };
